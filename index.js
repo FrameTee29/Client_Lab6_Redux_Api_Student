@@ -14,20 +14,12 @@ let students = [
         'sid': 6035512080,
         'firstname': 'Teeraphat',
         'lastname': 'Sittinantakul',
-        'weight': 168,
-        'height': 63,
+        'weight': 63,
+        'height': 167,
         'level':'Junior',
         'img': 'https://scontent.fbkk5-7.fna.fbcdn.net/v/t31.0-8/s960x960/23593791_1528829547170370_6602402212661050632_o.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=LAtlxHDIPTAAX80YlBZ&_nc_ht=scontent.fbkk5-7.fna&_nc_tp=7&oh=b63dadbacc1f100e6173a7202f1e972e&oe=5E8DC7E0'
     },
-    {
-        'sid': 6035512000,
-        'firstname': 'Frame',
-        'lastname': 'Teeraphat',
-        'weight': 168,
-        'height': 63,
-        'level':'Junior',
-        'img': 'https://scontent.fbkk5-7.fna.fbcdn.net/v/t31.0-8/s960x960/23593791_1528829547170370_6602402212661050632_o.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=LAtlxHDIPTAAX80YlBZ&_nc_ht=scontent.fbkk5-7.fna&_nc_tp=7&oh=b63dadbacc1f100e6173a7202f1e972e&oe=5E8DC7E0'
-    },
+    
 
 ];
 
