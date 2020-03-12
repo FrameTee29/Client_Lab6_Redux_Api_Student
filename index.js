@@ -9,45 +9,68 @@ app.use(cors());
 app.use('/api', bodyParser.json(), router);   //[use json]
 app.use('/api', bodyParser.urlencoded({ extended: false }), router);
 
-let bears = [
-    { 'id': 0, 'name': 'pooh', 'weight': 211, 'img': 'https://lumiere-a.akamaihd.net/v1/images/c94eed56a5e84479a2939c9172434567c0147d4f.jpeg?region=0,0,600,600' },
-    { 'id': 1, 'name': 'vinnie', 'weight': 111, 'img': 'https://cdn2.mhpbooks.com/2018/07/winnie_pooh_PNG37592.png' }
+let students = [
+    {
+        'sid': 6035512080,
+        'firstname': 'Teeraphat',
+        'lastname': 'Sittinantakul',
+        'weight': 168,
+        'height': 63,
+        'level':'Junior',
+        'img': 'https://scontent.fbkk5-7.fna.fbcdn.net/v/t31.0-8/s960x960/23593791_1528829547170370_6602402212661050632_o.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=LAtlxHDIPTAAX80YlBZ&_nc_ht=scontent.fbkk5-7.fna&_nc_tp=7&oh=b63dadbacc1f100e6173a7202f1e972e&oe=5E8DC7E0'
+    },
+    {
+        'sid': 6035512000,
+        'firstname': 'Frame',
+        'lastname': 'Teeraphat',
+        'weight': 168,
+        'height': 63,
+        'level':'Junior',
+        'img': 'https://scontent.fbkk5-7.fna.fbcdn.net/v/t31.0-8/s960x960/23593791_1528829547170370_6602402212661050632_o.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=LAtlxHDIPTAAX80YlBZ&_nc_ht=scontent.fbkk5-7.fna&_nc_tp=7&oh=b63dadbacc1f100e6173a7202f1e972e&oe=5E8DC7E0'
+    },
+
 ];
 
-router.route('/bears')
-    // get all bears
-    .get((req, res) => res.json(bears))
-    // insert a new bear
+router.route('/students')
+    // get all students
+    .get((req, res) => res.json(students))
+    // insert a new student
     .post((req, res) => {
-        var bear = {};
-        bear.id = bears.length > 0 ? bears[bears.length - 1].id + 1 : 0;
-        bear.name = req.body.name
-        bear.weight = req.body.weight
-        bear.img = req.body.img
-        bears.push(bear);
-        res.json({ message: 'Bear created!' })
+        var student = {};
+        student.sid = req.body.sid;
+        student.firstname = req.body.firstname;
+        student.lastname = req.body.lastname;
+        student.weight = req.body.weight;
+        student.height = req.body.height;
+        student.level = req.body.level;
+        student.img = req.body.img;
+        students.push(student);
+        res.json({ message: 'Student created!' })
     })
 
-router.route('/bears/:bear_id')
+router.route('/students/:sid')
     .get((req, res) => {
-        let id = req.params.bear_id
-        let index = bears.findIndex(bear => (bear.id === +id))
-        res.json(bears[index])                   // get a bear
+        let sid = req.params.sid
+        let index = students.findIndex(student => (student.sid=== +sid))
+        res.json(students[index])                   // get a student
     })
-    .put((req, res) => {                               // Update a bear
-        let id = req.params.bear_id
-        let index = bears.findIndex(bear => (bear.id === +id))
-        bears[index].name = req.body.name;
-        bears[index].weight = req.body.weight;
-        bears[index].img = req.body.img;
-        res.json({ message: 'Bear updated!' + req.params.bear_id });
+    .put((req, res) => {                               // Update a student
+        let sid = req.params.sid
+        let index = students.findIndex(student => (student.sid=== +sid))
+        students[index].sid = req.body.sid;
+        students[index].firstname = req.body.firstname;
+        students[index].lastname = req.body.lastname;
+        students[index].weight = req.body.weight;
+        students[index].height = req.body.height;
+        students[index].level = req.body.level;
+        students[index].img = req.body.img;
+        res.json({ message: 'Student updated!' + req.params.sid });
     })
-    .delete((req, res) => {                   // Delete a bear
-        // delete     bears[req.params.bear_id]
-        let id = req.params.bear_id
-        let index = bears.findIndex(bear => bear.id === +id)
-        bears.splice(index, 1)
-        res.json({ message: 'Bear deleted: ' + req.params.bear_id });
+    .delete((req, res) => {                   // Delete a student
+        let sid = req.params.sid
+        let index = students.findIndex(student => (student.sid=== +sid))
+        students.splice(index, 1)
+        res.json({ message: 'student deleted: ' + req.params.sid });
     })
 
 
